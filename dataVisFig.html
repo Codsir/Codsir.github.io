@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="msapplication-tap-highlight" content="no"/>
+<style>
+head{
+   
+}
+body{
+  max-width: 1000px;
+  margin:auto;
+  background-color: #E2E2E2;
+  font:18px "Microsoft Yahei";
+}
+code{
+   font:18px "Microsoft Yahei";
+}
+
+text{
+   font:20px "Microsoft Yahei";
+}
+
+textarea{
+  border:0.5px solid #A9B7E6;/*#9A9A9A;*/
+  background-color: #F0F4FA;
+}
+.codediv{
+  border:0.5px solid #A9B7E6;/*#9A9A9A;*/
+  background-color: #F0F4FA;
+}
+.content{
+  max-width: 1000px;
+  background-color: white;
+  padding:20px;
+}
+a{
+  color:#0366D6;
+  text-decoration:none;
+}
+li{
+ /* list-style-type:none;*/
+}
+table,th,td{
+  border:0.5px solid #A9B7E6;
+}
+table{
+  border-collapse:collapse;
+}
+td{
+  padding: 5px;
+  background-color: #F0F4FA ;
+}
+th{
+  background-color: #C4CFCA;
+}
+p{
+  line-height: 180%;
+}
+
+#ds-thread.ds-thread {
+  #ds-reset {
+    .ds-comments-info {
+      .ds-comments-tabs {
+        li.ds-tab {
+          .ds-comments-tab-weibo {
+            display: none;
+          }
+        }
+      }
+    }
+    .ds-powered-by {
+      display: none;
+    }
+  }
+}
+
+
+</style>
+<head>
+      
+     <div class = "content">
+       <h1><b>JavaScript与数据可视化</b></h1>
+       <!-- <div id = "visitnumber" style="font:#E2E2E2 12px"> </div> -->
+
+       <div>
+             <p><a href="#acknowt">前言</a></p>
+             <a href="#js">JavaScript</a>
+             <ul>
+               <li><a href="#defineJs">定义</a></li>
+               <li><a href="#powerOfjs">JavaScript的应用</a></li>
+               <li><a href="#runJs">运行环境</a> </li>  
+               <li><a href="#basicKndge">基本语法特点简介</a>
+                    <ul>
+                      <li><a href="#var">语法与数据类型</a></li>
+                      <li><a href="#type">控制流与错误处理</a></li>
+                      <li><a href="#Promises">Promises</a></li>
+                      
+                    </ul>
+               </li>
+               <li><a href="#function">函数(Function)</a>
+                    <ul>
+                      <li><a href="#defineFun">定义函数(Defining function)</a></li>
+                      <li><a href="#callingFun">调用函数(Calling functions)</a></li>
+                      <li><a href="#funscope">函数作用域(Function scope)</a></li>
+                      <li><a href="#closures">闭包(Closures)</a></li>
+                      <li><a href="#funPara">函数参数(Function parameter)</a></li>
+                      <li><a href="#arrowFun">箭头函数(Arrow functions)</a></li>
+                      <li><a href="#preFun">预定义函数(Predefined functions)</a></li>
+                    </ul>
+               </li> 
+               <li><a href="#objects">标准库对象</a>
+                 <ul>
+                      <li><a href="#jsobject">Javascript对象</a></li>
+                      <li><a href="#arrays">Arrays,TypedArrays</a></li>
+                      <li><a href="#maps">Map,WeakMap</a></li>
+                      <li><a href="#sets">Set,WeakSet</a></li>
+                      <li><a href="">RegExp(正则表达式)</a></li>
+                      <li><a href="">包装对象</a></li>
+                      <li><a href="">console对象</a></li>
+                      <li><a href="">Boolean,Number,String</a></li>
+                      <li><a href="">Math,Date,</a></li>
+                      <li><a href="">attributes object</a></li>
+                 </ul>
+               </li>
+               <li><a href="#json">JSON</a></li>
+               <li><a href="#objectop">面向对象编程</a></li>
+               <li><a href="#metap">元编程(Meta programming)</a></li>
+               <li><a href="#browser">浏览器对象</a></li>
+               <li><a href="#jquery">JQuery</a></li>
+               <li><a href="#nodejs">Node.js</a></li>
+               <li><a href="#projects">开发实例</a></li>             
+             </ul>
+       </div>
+       <div>
+             <a href="#dataV">数据可视化</a>
+             <ul>
+               <li><a href="#dvintroduction">数据可视化简介</a></li>
+               <li><a href="#d3.js">D3.js</a>
+                    <ul>
+                      <li><a href="#d3intro">D3简介</a></li>
+                      <li><a href="#d3select">Selections:操作网页元素</a></li>
+                      <li><a href="#dynamicp">Dynamic Properties:动态改变对象属性</a></li>
+                      <li><a href="#d3trans">Transformation, not Representation</a></li>
+                      <li><a href="#d3demo">使用D3绘图实例</a></li>
+                    </ul>
+               </li> 
+               <li><a href="#processing">Processing</a>
+                    <ul>
+                      <li><a href="#prointro">Processing简介</a></li>
+                      <li><a href="#proProgram">一个编程实例</a></li>
+                      <li><a href="#proinstance">几个生动的实现</a></li>
+
+                    </ul>
+               </li> 
+
+               <li><a href="#otherWays">其他工具</a></li> 
+              
+             </ul>
+       </div>
+       <div>
+         <a href="">Git</a>
+       </div>
+      <a href="#ref">参考资料</a>
+     </div>
+<script type="text/javascript">
+
+      if (localStorage.pagecount)
+      {
+        localStorage.pagecount=Number(localStorage.pagecount) +1;
+      }
+      else
+      {
+        localStorage.pagecount=1;
+      }
+       document.getElementById('visitnumber').innerText="阅读量: " +     localStorage.pagecount + " 次";
+</script> 
+</head>
+<body class="fullscreen">
+ 
+<div class = "content">
+<div id = "acknowt">
+  <h1>前言</h1>
+  <p>本网页介绍JavaScript的内容还需完善，且由于时间关系，页面表现形式还很简单，需要进一步完善，其中JavaScript的内容，作者主要介绍与Web数据可视化相关的内容，如有错误，恳请指正，可在页面下部评论或者通过作者<a href="http://notbuter.cn/">Github个人网页</a>上的联系方式进行联系。</p>
+</div>
+<div class="js" id = "js"> 
+ <h1>JavaScript</h1>  
+    <div id = "defineJs">   
+      
+      <h2>JavaScript定义</h2>
+      <p>JavaScript（缩写：JS）是一门成熟的动态编程语言，应用于HTML文档是能够在网站上提供动态交互能力。她是由Brendan Eich首先开发，Mozilla项目、Mozilla基金会以及Mozilla公司协助开发的。
+       </p>
+       <p>再看一下html，css和JavaScript三者的作用，分别如下
+          <ul>
+            <li>HTML是一种标记语言，用来结构化我们的网页内容和赋予内容含义，例如定义段落、标题、和数据表,或在页面中嵌入图片和视频。
+            </li>
+            <li>CSS 是一种样式规则语言，我们将样式应用于我们的 HTML 内容， 例如设置背景颜色和字体，在多个列种布局我们的内容。
+            </li>
+            <li>JavaScript是允许你在网页中实现复杂事情的一门编程语言,每次当我们浏览网页时不只是显示静态信息，显示即时更新的内容， 或者交互式的地图，或2D/3D图形动画，又或者自动播放视频等，你可以确信，JavaScript参与其中。
+            </li>
+          </ul>
+       </p>
+  </div>
+  <div id = "powerOfjs">
+      <p>
+      JavaScript是很强大，我们可以从简单做起,比如轮播、相册,浮动布局,和按钮点击事件。还可以创建 游戏、2d动画、3d图像、数据库驱动的综合应用程序等等。
+      </p>
+      <p>
+      JavaScript本身是非常简洁却非常灵活的。开发者们编写了非常多的工具补充JavaScript语言功能。使得花最小的代价获得大量额外功能。这些功能包括：
+      <ul>
+        <li> 
+          应用编程接口(Application Programming Interfaces(APIs)) 。内置于浏览器中提供像动态编写 HTML 和 CSS ，抓取操控用户摄像头的数据流和操作3D图像和音频样品。
+       </li>
+         <li>第三方 APIs 允许开发者将其他公司网站如 Twitter 或 Facebook 与自己的网站合并功能。</li> 
+        <li> 第三方框架和库，你可以使用你的 HTML 来快速编写网站和应用。</li>
+       
+      </ul>
+      </p>
+      <p>
+        APIs 是已经建立好的一套代码组件，目的是让开发者可以实现除此之外很难甚至不可能实现的程序。它们的作用就像是已经制作好的家具套件对家居建设的作用一样——从一堆已经切好的木板开始组装一个书柜，显然比自己设计，寻找合适的木材，裁切至合适的大小和形状，找到合适大小的螺丝钉，然后组装成一个书柜要简单得多。通常分为两类，第三方API(The 3rd APIs)和浏览器APIs。浏览器APIs(Browser APIs)已经安装在你的网页浏览器中，而且能够从周围的计算机环境中揭露数据，或者做些复杂而有用的事情。第三方 APIs (Third party APIs) 默认是没有安装到浏览器中的，而你通常需要从网络上的某些地方取得它们的代码和信息。下面是一些APIs的例子，可以感受一下JavaScript的强大，详细了解建议到<a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/What_is_JavaScript">Mozilla开发者网站JavaScript教程</a>上去了解，这里只是介绍框架。
+        </p>
+        <p>
+         <h3>浏览器APIs</h3>
+         <ul>
+           <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">API[DOM(Document Object Model)API] </a>
+           </li>
+           <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation">Geolocation API</a>
+               example:
+               <a href="https://www.google.com/maps">Google Maps</a>
+           </li>
+           <li>
+             <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas</a>,
+             <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a>
+             example:
+             <a href="https://www.chromeexperiments.com/webgl">Chrome experiments</a>,
+             <a href="http://webglsamples.org/">Webgl samples</a>
+           </li>
+           <li>
+             <a href="https://developer.mozilla.org/en-US/Apps/Fundamentals/Audio_and_video_delivery">Audio and Video APIs</a>
+             example:
+             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement">HTMLMediaElement</a>,
+             <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API">WebRTC API</a>
+           </li>
+         </ul>
+        </p>
+        <p>
+          <h3>第三方APIs</h3>
+          <ul>
+            <li><a href="https://dev.twitter.com/docs">Twitter API</a>允许你做一些像是在你的网站上展示你的最新推送之类的事情。</li>
+            <li><a href="https://developers.google.com/maps/">Google Maps API</a>允许你去嵌入定制的地图到你的网站，和其他的功能。</li>
+          </ul>
+        </p>
+  </div>
+  <div id = "runJs">
+     <h2>JavaScript运行与实例</h2>
+     <p>要让浏览器运行JavaScript，必须先有一个HTML页面，在HTML页面中引入JavaScript，然后，让浏览器加载该HTML页面，就可以执行JavaScript代码。直接在硬盘上创建好HTML和JavaScript文件，然后用浏览器打开的方式运行部分JavaScript代码没有问题，但由于浏览器的安全限制，以file://开头的地址无法执行需要联网的JavaScript代码，比如引用了一个网络上的JavaScript文件就运行不了，我们还是需要架设一个Web服务器，然后以http://开头的地址来正常执行所有JavaScript代码。这类似于JSP，需要服务器。有些浏览器支持在浏览器内运行JavaScript代码，如Google Chrome，FireFox等。下面举例来说明怎么运行。将下面代码放入浏览器“检查”->“console” 即可看到代码变为红色。    
+     </p>   
+     <div class = "codediv" id = "testCode">
+        <pre>
+            <code class="language-javascript" data-lang="javascript">
+               var d = document.getElementById("testCode");
+               d.style.backgroundColor = "red";
+            </code>
+        </pre>
+     </div>
+     <p> 当然也有一些软件编辑器，如Webcharm，Eclipse，Sublime Text，Notepad++等等，还有一些在线编辑器如下面的几种
+         <ul>
+            <li><a href="https://thimble.mozilla.org/zh-CN/">thimble</a></li>
+            <li><a href="https://jsfiddle.net/">jsfiddle</a></li>
+            <li><a href="http://jsbin.com/">js bin</a></li>
+         </ul>
+     </p>
+  </div>
+  <div id = "basicKndge">
+     <p>网络上JavaScript的教程有很多，比如之前提到的<a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/First_steps/What_is_JavaScript">Mozilla开发者网站JavaScript教程</a>就很不错，我只列举和讲解一些基本常用的关键字、对象等。</p>
+     <div id = "var">
+          <h3>语法与数据类型</h3>
+          <table>
+          <caption>JavaScript基本关键字、标识符和语法列表</caption>
+          <tr>
+          <th>关键字</th>
+          <th>作用</th>
+          </tr>
+          <tr>
+          <td>var</td>
+          <td>定义一个变量，如：var x = 1;</td>
+          </tr>
+          <tr>
+          <td>undefined</td>
+          <td>只是声明但并未赋值，如：var x; //x为undefined</td>
+          </tr>
+          <tr>
+          <td>null</td>
+          <td>空值</td>
+          </tr>
+          <tr>
+          <td>NaN</td>
+          <td>非数，表示不是一个数字</td>
+          </tr>
+          <tr>
+            <td>typeof</td>
+            <td>运算符可以返回一个值的数据类型,数值、字符串、布尔值分别返回number、string、boolean,函数返回function,undefined返回undefined,除此以外，其他情况都返回object.</td>
+          </tr>
+          <tr>
+            <td>Number()</td>
+            <td>原始类型的值主要是字符串、布尔值、undefined和null，它们都能被Number转成数值或NaN.只要有一个字符无法转成数值，整个字符串就会被转为NaN,Number函数会自动过滤一个字符串前导和后缀的空格.Number方法的参数是对象时，将返回NaN</td>
+          </tr>
+          <tr>
+            <td>String()</td>
+            <td>原始类型值的转换规则数值：转为相应的字符串。字符串：转换后还是原来的值。布尔值：true转为"true"，false转为"false"。undefined：转为"undefined"。null：转为"null"。String方法的参数如果是对象，返回一个类型字符串；如果是数组，返回该数组的字符串形式。</td>
+          </tr>
+          <tr>
+            <td>Boolean()</td>
+            <td>除了以下六个值的转换结果为false，其他的值全部为true。undefined,null,-0,0或+0,NaN,''（空字符串）</td>
+          </tr>
+          <tr>
+          <td>if(expression){ <br>
+                statement1;   <br>
+                }             <br>
+              else if(){     <br>
+                statement2;  <br>
+              }  
+          </td>
+          <td>判断语句</td>
+          </tr>
+          <tr>
+          <td>switch(expression){ <br>
+                case value1: statement1;  <br>
+                case value2: statement2;  <br>
+                 ...                      <br>
+                case valueN: statementN;  <br>
+                default:otherstatement; 
+              }  
+          </td>
+          <td>Switch语句</td>
+          </tr>
+          <tr>
+          <td>(condition) ? expr1 : expr2</td>
+          <td>三元运算符，如果condition为true，则返回expr1，否则，返回expr2</td>
+          </tr>
+          <tr>
+            <td>
+              while (expression) { <br>
+                 statement; <br>
+              }
+            </td>
+            <td>while循环</td>
+          </tr>
+          <tr>
+            <td>
+              for (initialize; test; increment) {<br>
+                       statement; <br>
+              }                   
+            </td>
+            <td>for循环</td>
+          </tr>
+          <tr>
+            <td>do {            <br>
+                    statement;  <br>
+                } while (expression);
+         </td>
+            <td>do...while</td>
+          </tr>
+          <tr>
+            <td>break</td>
+            <td>用于跳出代码块或循环</td>  
+          </tr>
+          <tr>
+            <td>continue</td>
+            <td>用于立即终止本轮循环，返回循环结构的头部，开始下一轮循环</td>  
+          </tr>
+          <tr>
+          <tr>
+            <td>for...in</td>
+            <td>for...in 语句循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。for (variable in object) { statements}</td>
+          </tr>
+          <tr>
+            <td>for...of statement</td>
+            <td>该新特性属于 ECMAScript 2015（ES6）规范，在使用时请注意浏览器兼容性。for...of语句在可迭代的对象上创建了一个循环(包括Array, Map, Set, 参数对象（ arguments） 等等)，对值的每一个独特的属性调用一个将被执行的自定义的和语句挂钩的迭代。for (variable of object) {statement}
+            </td>
+          </tr>
+          <tr>
+            <td>for each...in</td>
+            <td>for each...in 是一种在 JavaScript 1.6介绍过的循环语句。它和for...in相似，但是让对象属性的值递回取得，而不是作用于它们的名字。</td>
+          </tr>
+        </table>
+   </div>
+       <div id = "type"> 
+            <h3>控制流与错误处理</h3>
+            <table>
+            <caption>JavaScript控制流与错误处理列表</caption>
+            <tr>
+          <th>关键字</th>
+          <th>作用</th>
+          </tr>
+
+          <tr>
+            <td>Error</td>
+            <td>JavaScript解析或执行时，一旦发生错误，引擎就会抛出一个错误对象。JavaScript原生提供一个Error构造函数，所有抛出的错误都是这个构造函数的实例。根据语言标准，Error对象的实例必须有message属性，表示出错时的提示信息，其他属性则没有提及。大多数JavaScript引擎，对Error实例还提供name和stack属性，分别表示错误的名称和错误的堆栈，但是非标准的.</td>
+          </tr>
+          <tr>
+            <td>SyntaxError</td>
+            <td>解析代码时发生的语法错误</td>
+          </tr>
+          <tr>
+            <td>ReferenceError</td>
+            <td>引用一个不存在的变量时发生的错误</td>
+          </tr>
+          <tr>
+            <td>TypeError</td>
+            <td>TypeError是变量或参数不是预期类型时发生的错误。比如，对字符串、布尔值、数值等原始类型的值使用new命令，就会抛出这种错误，因为new命令的参数应该是一个构造函数。
+            </td>
+          </tr>
+          <tr>
+            <td>URIError</td>
+            <td>URIError是URI相关函数的参数不正确时抛出的错误</td>
+          </tr>
+          <tr>
+            <td>EvalError</td>
+            <td>eval函数没有被正确执行时，会抛出EvalError错误。该错误类型已经不再在ES5中出现了，只是为了保证与以前代码兼容，才继续保留</td>
+          </tr>
+          <tr>
+            <td>throw</td>
+            <td>throw语句的作用是中断程序执行，抛出一个意外或错误。它接受一个表达式作为参数，可以抛出各种值。</td>
+          </tr>
+           <tr>
+            <td>try…catch</td>
+            <td>try代码块一抛出错误，JavaScript引擎就立即把代码的执行，转到catch代码块，错误被catch代码块捕获。catch接受一个参数，表示try代码块抛出的值。</td>
+          </tr>
+          </table>
+        </div>
+        <div id = "Promises">
+          <h4>Promises</h4>
+          <p>
+            由于promise对象较为重要，单独介绍，从 ECMAScript 6 开始，JavaScript 增加了对 Promise 对象的支持，它允许你对延时和异步操作流进行控制，Promise 对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步代码执行结果的成功和失败分别绑定相应的处理方法（handlers ）。 这让异步方法可以像同步方法那样返回值，但是并非立即返回执行的结果，因为毕竟执行的是异步代码，因此，它会返回一个Promise对象，如前所说，它是一个代理的对象，代理了最终返回的值，可以在后期使用.Promise 对象有以下几种状态:</p>
+            <ul>
+              <li>pending (进行中): 初始的状态，即正在执行，不处于 fulfilled 或 rejected 状态。</li>
+              <li>fulfilled (已完成): 成功的完成了操作。</li>
+              <li>rejected (已失败): 失败，没有完成操作。</li>
+              <li>settled (已解决): Promise 处于 fulfilled 或 rejected 二者中的任意一个状态, 不会是 pending。</li>
+            </ul>
+            下面是建立promise对象的语句
+               <div class = "codediv">
+                  <pre>
+                    <code class="language-javascript" data-lang="javascript">
+                       new Promise(
+                          /* executor */ 
+                          function(resolve, reject){...}
+                          );
+                    </code>
+                  </pre>
+                </div>
+             <h4>参数</h4>
+             <p>一个与参数resolve和 reject一起传递的函数 。执行器函数由Promise实现立即执行，传递resolve和reject函数. (在Promise构造函数之前调用执行器甚至返回创建的对象)
+             </p>
+             <p>
+             在 executor 内部，如果 resolve 被调用，代表该Promise被成功解析（resolve），而当reject被调用时，代表该Promise的值不能用于后续处理了，也就是被拒绝（reject）了。executor主要用于初始化异步代码， 一旦异步代码调用完成，要么调用 resolve 方法来表示Promise被成功解析，或是调用 reject 方法，表示初始化的异步代码调用失败，整个promise被拒绝。
+             </p>
+             <p>
+              如果在executor 方法的执行过程中抛出了任何异常，那么promise立即被拒绝（即相当于reject方法被调用），executor 的返回值也就会被忽略。
+             </p>
+          <caption>Promise及其原型的属性和方法</caption>
+          <table>
+          <tr>
+          <th>方法</th>
+          <th>作用</th>
+          </tr>
+          <tr>
+            <td>Promise.length</td>
+            <td>长度属性，其值为 1 (构造器参数的数目).</td>
+          </tr>
+          <tr>
+            <td>Promise.prototype</td>
+            <td>表示 Promise 构造器的原型.</td>
+          </tr>
+          <tr>
+            <td>Promise.all(iterable)</td>
+            <td>这个方法返回一个新的promise对象，该promise对象在iterable里所有的promise对象都成功的时候才会触发成功，一旦有任何一个iterable里面的promise对象失败则立即触发该promise对象的失败。这个新的promise对象在触发成功状态以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，顺序跟iterable的顺序保持一致；如果这个新的promise对象触发了失败状态，它会把iterable里第一个触发失败的promise对象的错误信息作为它的失败错误信息。Promise.all方法常被用于处理多个promise对象的状态集合，可以参考jQuery.when方法
+            </td>
+          </tr>
+          <tr>
+            <td>Promise.race(iterable)</td>
+            <td>当iterable参数里的任意一个子promise被成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。</td>
+          </tr>
+          <tr>
+            <td>Promise.reject(reason)</td>
+            <td>调用Promise的rejected句柄，并返回这个Promise对象。</td>
+          </tr>
+          <tr>
+            <td>Promise.resolve(value)</td>
+            <td>用成功值value完成一个Promise对象。如果该value为可继续的（thenable，即带有then方法），返回的Promise对象会“跟随”这个value，采用这个value的最终状态；否则的话返回值会用这个value满足（fullfil）返回的Promise对象。</td>
+          </tr>
+          <tr>
+            <td>Promise.prototype.constructor</td>
+            <td>返回创建了实例原型的函数.  默认为 Promise 函数.</td>
+          </tr>
+          <tr>
+            <td>Promise.prototype.catch(onRejected)</td>
+            <td>添加一个否定(rejection) 回调到当前 promise, 返回一个新的promise。如果这个回调被调用，新 promise 将以它的返回值来resolve，否则如果当前promise 进入fulfilled状态，则以当前promise的肯定结果作为新promise的肯定结果.</td>
+          </tr>
+          <tr>
+            <td>Promise.prototype.then(onFulfilled, onRejected)</td>
+            <td>添加肯定和否定回调到当前 promise, 返回一个新的 promise, 将以回调的返回值 来resolve.</td>
+          </tr>
+          </table>
+          下面是一个例子(来自Mozilla开发者网站)
+          <div class = "codediv">
+                  <pre>
+                    <code class="language-javascript" data-lang="javascript">
+                       var myFirstPromise = new Promise(function(resolve, reject){
+                        //当异步代码执行成功时，我们才会调用resolve(...), 
+                        //当异步代码失败时就会调用reject(...)
+                        //在本例中，我们使用setTimeout(...)来模拟异步代码，
+                        //实际编码时可能是XHR请求或是HTML5的一些API方法.
+                            setTimeout(function(){
+                                resolve("成功!"); //代码正常执行！
+                            }, 250);
+                        });
+
+                        myFirstPromise.then(function(successMessage){
+                            //successMessage的值是上面调用resolve(...)方法传入的值.
+                            //successMessage参数不一定非要是字符串类型，这里只是举个例子
+                            console.log("Yay! " + successMessage);
+                        });
+                    </code>
+                  </pre>
+          </div>
+      </div>
+      <div id = "function">
+      <h3>函数</h3>
+         
+      </div>
+      <div id = "objects">
+      <h3>JavaScript对象</h3>
+
+      </div>
+      <div id = "json">
+         <h3>JSON</h3>
+         <h4>JSON是什么</h4>
+         <p> JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
+         <p>相比XML格式，JSON格式有两个显著的优点：书写简单，一目了然；符合JavaScript原生语法，可以由解释引擎直接处理，不用另外添加解析代码。所以，JSON迅速被接受，已经成为各大网站交换数据的标准格式，并被写入ECMAScript 5，成为标准的一部分。</p>
+         <h4>JSON建立的结构是两种大部分计算机语言支持的结构：</h4>
+         <p>
+           <ul>
+             <li>“名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。
+             </li>
+             <li>值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。</li>
+           </ul>
+         </p>
+         <h4>JSON的形式如下：</h4>
+         <p>
+           <ul>
+             <li>Object,对象是一个无序的“‘名称/值’对”集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“‘名称/值’ 对”之间使用“,”（逗号）分隔。</li>
+             <li>Array,数组是值（value）的有序集合。一个数组以“[”（左中括号）开始，“]”（右中括号）结束。值之间使用“,”（逗号）分隔。</li>
+             <li>value,值可以是双引号括起来的字符串（string）、数值(number)、true、false、 null、对象（object）或者数组（array）。这些结构可以嵌套。</li>
+              <li>
+               string,字符串是由双引号包围的任意数量Unicode字符的集合，使用反斜线转义。一个字符（character）即一个单独的字符串（character string）。字符串（string）与C或者Java的字符串非常相似。
+              </li>
+              <li>
+                number,数值也与C或者Java的数值非常相似。除去未曾使用的八进制与十六进制格式。除去一些编码细节。
+              </li>
+           </ul>
+         </p>
+         <p>除上述形式外，需要注意的是复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。简单类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和null（不能使用NaN, Infinity, -Infinity和undefined）。字符串必须使用双引号表示，不能使用单引号。对象的键名必须放在双引号里面。数组或对象最后一个成员的后面，不能加逗号。</p>
+         <h4>操作JSON对象</h4>
+         <caption>JSON对象方法</caption>
+         <table>
+           <tr>
+             <th>方法</th>
+             <th>介绍</th>
+             <th>参数</th>
+           </tr>
+           <tr>
+             <td>JSON.parse(text[, reviver])</td>
+             <td>JSON.parse() 方法解析一个JSON字符串，构造由字符串描述的JavaScript值或对象。可以提供可选的reviver函数以在返回之前对所得到的对象执行变换。</td>
+             <td>
+                  text,要被解析成JavaSctipt值的字符串 <br>
+                  reviver,可选,如果是一个函数，则规定了原始值如何被解析改造，在被返回之前。<br>
+                 返回值,Object对应给定的JSON文本。<br>
+                 异常,若被解析的JSON 字符串是非法的，则会抛出一个语法错误异常。
+             </td>
+           </tr>
+           <tr>
+             <td>JSON.stringify(value[, replacer [, space]])</td>
+             <td>JSON.stringify() 方法将JavaScript值转换为JSON字符串，如果指定了replacer函数，则可以替换值，或者如果指定了replacer数组，则可选地仅包括指定的属性。</td>
+             <td>value,将要序列化成 JSON 字符串的值。<br>
+               replacer,可选，分为数组、函数、null或没有设值几种情况处理不同。<br>
+               space,可选指定缩进用的空白字符串，用于美化输出（pretty-print）；<br>
+               返回值,一个表示给定值的JSON字符串。
+               </td>
+           </tr>
+         </table>
+         <h4>读取和写入JSON文件</h4>
+         <p>
+           JSON文件是文本文件，对于本地文件，读取文件可先像读取其它文本文件如txt一样读取成字符串，然后再使用JSON.parse(),转化为JavaScript对象；而写入则可使用Node.js的fs模块将JSON对象写入到文件中。
+         </p>
+      </div>
+      <div id = "objectop">
+      <h3>面向对象编程</h3>
+        
+      </div>
+      <div id = "metap">
+      <h3>元编程(Meta Programming)</h3>
+        
+      </div>
+      <div id = "browser">
+      <h3>DOM</h3>
+      <h4>简介</h4>
+      <p>
+      DOM是JavaScript操作网页的接口，全称为“文档对象模型”（Document Object Model）。它的作用是将网页转为一个JavaScript对象，从而可以用脚本进行各种操作（比如增删内容）。</p>
+      <p>
+      浏览器会根据DOM模型，将结构化文档（比如HTML和XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。所以，DOM可以理解成网页的编程接口。DOM有自己的国际标准，目前的通用版本是DOM 3，下一代版本DOM 4正在拟定中。</p>
+      <p>
+      严格地说，DOM不属于JavaScript，但是操作DOM是JavaScript最常见的任务，而JavaScript也是最常用于DOM操作的语言。</p>
+      <b>节点</b>
+      <p>
+        DOM的最小组成单位叫做节点（node）。文档的树形结构（DOM树），就是由各种不同类型的节点组成。每个节点可以看作是文档树的一片叶子。
+      </p>
+      <p>
+        常见的节点：
+        <ul>
+            <li>Document：整个文档树的顶层节点</li>
+            <li>DocumentType：doctype标签（比如《!DOCTYPE html》）</li> 
+            <li>Element：网页的各种HTML标签（比如《body》、《a》等）</li>
+            <li>Attribute：网页元素的属性（比如class="right"）</li>
+            <li>Text：标签之间或标签包含的文本</li>
+            <li>Comment：注释</li>
+            <li>DocumentFragment：文档的片段</li>
+        </ul>
+      </p>
+      <b>节点树</b>
+      <p>一个文档的所有节点，按照所在的层级，可以抽象成一种树状结构。这种树状结构就是DOM。最顶层的节点就是document节点，它代表了整个文档。文档里面最高一层的HTML标签，一般是《html》，它构成树结构的根节点（root node），其他HTML标签节点都是它的下级，因而节点之间存在以下一些关系：
+          <ul>
+                <li>父节点关系（parentNode）：直接的那个上级节点</li>
+                <li>子节点关系（childNodes）：直接的下级节点</li>
+                <li>同级节点关系（sibling）：拥有同一个父节点的节点</li>
+          </ul>
+      </p>
+      <p>
+        DOM提供操作接口，用来获取三种关系的节点。其中，子节点接口包括firstChild（第一个子节点）和lastChild（最后一个子节点）等属性，同级节点接口包括nextSibling（紧邻在后的那个同级节点）和previousSibling（紧邻在前的那个同级节点）属性。
+      </p>
+      <p>
+        window对象不但充当全局作用域，而且表示浏览器窗口。window对象有innerWidth和innerHeight属性，可以获取浏览器窗口的内部宽度和高度。内部宽高是指除去菜单栏、工具栏、边框等占位元素后，用于显示网页的净宽高。
+      </p>
+      <p>
+        对应的，还有一个outerWidth和outerHeight属性，可以获取浏览器窗口的整个宽高。</p>
+      <p>
+      navigator对象表示浏览器的信息，最常用的属性包括：
+      <ul>
+            <li>navigator.appName：浏览器名称；</li> 
+           <li>navigator.appVersion：浏览器版本；</li>
+           <li>navigator.language：浏览器设置的语言；</li>
+           <li>navigator.platform：操作系统类型；</li>
+           <li>navigator.userAgent：浏览器设定的User-Agent字符串。</li>
+      </ul>
+      </p>
+      <h4>特征相关的属性</h4>
+      <p>所有节点对象都是浏览器内置的Node对象的实例，继承了Node属性和方法。这是所有节点的共同特征。以下属性与节点对象本身的特征相关。
+          <ul>
+            <li>Node.nodeName，Node.nodeType</li>
+            <li>Node.nodeValue</li>
+            <li>Node.textContent</li>
+            <li>Node.baseURI</li>
+          </ul>
+      </p>
+      <h4>相关节点的属性</h4>
+      <p>以下属性返回当前节点的相关节点
+          <ul>
+            <li>Node.ownerDocument</li>
+            <li>Node.nextSibling</li>
+            <li>Node.previousSibling</li>
+            <li>Node.parentNode</li>
+            <li>Node.parentElement</li>
+            <li>Node.childNodes</li>
+            <li>Node.firstChild，Node.lastChild</li>
+          </ul>
+      </p>
+      <h4>节点对象的方法</h4>
+      <p>
+        <ul>
+          <li>Node.appendChild()</li>
+          <li>Node.hasChildNodes()</li>
+          <li>Node.cloneNode()</li>
+          <li>Node.insertBefore()</li>
+          <li>Node.removeChild()</li>
+          <li>Node.replaceChild()</li>
+          <li>Node.contains()</li>
+          <li>Node.compareDocumentPosition()</li>
+          <li>Node.isEqualNode()</li>
+          <li>Node.normalize()</li>
+        </ul>
+      </p>
+      <h4>NodeList对象，HTMLCollection对象</h4>
+      <h4>HTMLCollection对象</h4>
+      <h4>ParentNode接口，ChildNode接口</h4>
+      </div>
+       <div id = "jquery">
+      <h3>jQuery</h3>
+        <p>
+          jQuery是目前使用最广泛的JavaScript函数库。据统计，全世界57.5%的网站使用jQuery，在使用JavaScript函数库的网站中，93.0%使用jQuery。它已经成了开发者必须学会的技能。jQuery的最大优势有两个。首先，它基本是一个DOM操作工具，可以使操作DOM对象变得异常容易。其次，它统一了不同浏览器的API接口，使得代码在所有现代浏览器均能运行，开发者不用担心浏览器之间的差异。详细学习可到<a href="http://jquery.com/"> jQuery官网</a>.
+        </p>
+        <p> 
+           <div class = "codediv">
+           <xmp>
+                  <html>
+                  <head>
+                  <script type="text/javascript" src="jquery.js"></script>
+                  <script type="text/javascript">
+                  $(document).ready(function(){
+                  $("button").click(function(){
+                  $("p").hide();
+                  });
+                  });
+                  </script>
+                  </head>
+
+                  <body>
+                  <h2>This is a heading</h2>
+                  <p>This is a paragraph.</p>
+                  <p>This is another paragraph.</p>
+                  <button type="button">Click me</button>
+                  </body>
+                  </html> 
+           </xmp>
+           </div>
+        </p>
+
+      </div>
+       <div id = "nodejs">
+      <h3>Node.js</h3>
+        
+      </div>
+      <div id = "projects">
+      <h3>项目实战</h3>
+        
+      </div>
+  </div>
+   
+   
+</div>
+
+
+
+<div class="dataV" id = "dataV">
+  <div id = "dvintroduction">
+    <h1>数据可视化</h1>
+    <p><b>定义</b> 以有意义的方式使用图表与人交流数据。数据可视化的主要目标是清晰地传递信息并使复杂的数据容易被理解。  </p>
+    <p>数据可视化的一般步骤
+        <ol>
+          <li>观察数据</li>
+          <li>简单画图</li>
+          <li>提出问题</li>
+          <li>产生构想</li>
+          <li>实现想法</li>
+        </ol>
+    </p>
+  </div>
+    <p>下面是一个比较好的例子：<a  href="http://guns.periscopic.com" target = "gunsDemo"><b>播放</b> </a></p>
+     <div class="demo1">
+        <iframe id = "iframepage" name = "gunsDemo" sandbox="allow-popups allow-scripts allow-forms allow-same-origin"  marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="数据可视化实例" href="http://guns.periscopic.com">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+</div>
+<div id="d3.js" >
+  <h2>D3.js</h2>
+  <div id = "d3intro">
+      <p>
+        D3.js是一个用于网页作图，生成互动图像的JavaScript库。D3使用HTML、SVG和CSS来生动地表现数据。D3提供一个d3对象，所有方法都通过这个对象调用。下面是简单介绍，详细教程见官方网站：<a href="https://d3js.org/" target="_blank">D3.js</a>
+      </p>
+       <div class="demo1">
+        <iframe id = "iframepage" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="https://d3js.org/" marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="D3官网" href="https://github.com/d3/d3/wiki/Gallery#visual-index">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+        </div>
+        </div>
+  </div>
+  <div id = "d3select">
+      <h3>Selections:操作网页元素</h3>
+      <p>
+        D3提供了操作网页元素的方法，先选中某个元素(select方法),然后对其进行某种操作。
+      </p>
+       <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              var body = d3.select("body");
+              var div = body.append("div");
+              div.html("Hello, world!");
+            </code>
+          </pre>
+        </div>
+     <p>   select方法用于选中一个元素，selectAll方法用于选中一组元素。</p>
+        <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              var section = d3.selectAll("section");
+              var div = section.append("div");
+              div.html("Hello, world!");
+            </code>
+          </pre>
+        </div>
+      <p>大部分D3的方法都返回D3对象的实例，因此程序可以一次对一个对象进行多个操作或设置，即可采用链式写法。</p>
+      <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              d3.select("body")
+                  .style("color", "black")
+                  .style("background-color", "white");
+            </code>
+          </pre>
+        </div>
+      <p>使用append方法相当于增加一个新的对象到选择的对象中</p>
+      <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              d3.selectAll("section")
+                   .attr("class", "special")
+                   .append("div")
+                   .html("Hello, world!"); //html()设置div中的显示内容
+            </code>
+          </pre>
+      </div>
+ </div>
+ <div id = "dynamicp">
+      <h3>Dynamic Properties:动态改变对象属性</h3>
+      <p>
+        D3和前面提到的jQuery或者Prototype在DOM操作方面很像，在D3中，对象的风格(styles)，属性(attributes)和其它特征(properties) 都可以使用函数来动态改变，而不只是常量。
+      </p>
+      <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              //动态改变字体颜色
+              d3.selectAll("p").style("color", function() {
+                    return "hsl(" + Math.random() * 360 + ",100%,50%)";
+              });
+
+              //动态改变字体大小
+              d3.selectAll("p")
+                  .data([4, 8, 15, 16, 23, 42])
+                  .style("font-size", function(d) { return d + "px"; });
+            </code>
+          </pre>
+      </div>
+      <p>
+        使用D3的enter()和exit()选择器，我们可以为多余的数据创建新的结点，或删掉不需要的节点。当数据超出选择范围时，数据向量中每个元素都会和对应的DOM节点比较。如果节点比数据元素少，对于enter选择器中多余的数据元素我们可以通过append()再创建与之对应的新的对象。如下例所示
+      </p>
+      <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              d3.select("body")
+                  .selectAll("p")
+                  .data([4, 8, 15, 16, 23, 42])
+                  .enter().append("p")
+                  .text(function(d) { return "I’m number " + d + "!"; });
+            </code>
+          </pre>
+      </div>
+      <p>
+      如果我们忘记了enter和exit选择器(selections),程序将会自动选择那些存在对于数据元素的DOM节点。一般模式是将初始选择器分为三部分：要改变的更新结点(the updating nodes)，要增加的进入(entering nodes)，和要删除的退出结点(the exiting nodes).
+      </p>
+      <div class = "codediv">
+          <pre>
+            <code class="language-javascript" data-lang="javascript">
+              // Update…
+                var p = d3.select("body")
+                             .selectAll("p")
+                             .data([4, 8, 15, 16, 23, 42])
+                             .text(function(d) { return d; });
+
+              // Enter…
+              p.enter().append("p")
+                    .text(function(d) { return d; });
+
+              // Exit…
+              p.exit().remove();
+            </code>
+          </pre>
+      </div>
+ </div>
+ <div id = "d3trans">
+  <h3>Transformation, not Representation:转化而非呈现</h3>
+  <p> D3并没有引进一种新的视觉呈现方式。与Processing, Raphaël,或者Protovis不同，D3的图形标志符完全来自Web标准：HTML、SVG和CSS。所以即使浏览器在未来引进了新特性，我们不用升级工具包也可以立即使用。D3在浏览器中尽可以进行debug。</p> 
+  <h3>Transitions:转变</h3>
+  <p>
+    D3致力于使转变尽量自然。转变或渐变是随时间插入风格和特性。比如动画可以通过简单的控制函数如"elastic","cubic-in-out"和"linear"实现。D3的插值器也支持原型，如数字和数字嵌入字符串，还有复合值。如下例
+  </p>
+    <div class = "codediv">
+        <pre>
+          <code class="language-javascript" data-lang="javascript">
+           //将页面背景逐渐变为黑色
+           d3.select("body").transition()
+                .style("background-color", "black");
+          </code>
+        </pre>
+    </div>
+</div>
+<div id = "d3demo" >
+ <h3>使用D3.js绘图实例:现有数据可视化技术概览</h3> 
+ <p>下面是本人使用D3.js绘制的现有数据可视化技术及其之间的联系图，其中红色代表编程语言比如JavaScript，绿色代表编程语言的一部分技术比如canvas，蓝色代表编程语言的API比如D3.js，橙色代表软件比如Tableau，绿色箭头代表软件对语言的支持如Tableau支持Python编程，紫色箭头代表发展和延伸比如从Javascript发展出了D3.js等。</p>
+    <div class="demo1">
+        <iframe id = "iframepage" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="demo1.html" marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="no"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使用D3实例" href="demo1.html">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+        </div>
+    </div>
+</div>
+<div id = "processing">
+  <div id = "prointro">
+  <h2>Processing</h2>
+  <p>
+    Processing是一个灵活的软件素描本和一门学习视觉艺术的编程语言。Processing是一个为开发面向图形的应用（visually oriented application）而生的简单易用的编程语言和编程环境，它尤其擅长算法动画和即时交互反馈，所以近年来在交互动画，复杂数据可视化，视觉设计，原型开发和制作方向越发流行。Processing是用Java编程语言写的，并且Java语言也是在语言树中最接近Processing的。Processing应用广泛，甚至可以<a href="https://github.com/atduskgreg/opencv-processing">实现OpenCV</a>.
+  </p>
+  </div>
+  <div id = "proProgram">
+  <p>
+    本人觉得Processing的最大优点是简单并且交互性容易设计与实现，并且支持Python，JavaScript和Java编程，而且由于p5.js通过JavaScript实现了Processing，所以方便了Web数据可视化，当然还有processing的Python实现：processing.py,下面是一个p5.js和Processing在Java模式简单的实例对比。
+  </p>
+  <div class = "codediv">
+      <pre>
+        <code class="language-javascript" data-lang="html">
+          /**div id="p5container" /div
+           * Hue. 
+           * Hue is the color reflected from or transmitted through an object 
+           * and is typically referred to as the name of the color (red, blue, yellow, etc.) 
+           * Move the cursor vertically over each bar to alter its hue. 
+           */
+          var barWidth = 20;
+          var lastBar = -1;
+          function setup() 
+          {
+            var canvas = createCanvas(800, 600);
+            canvas.parent("p5container"); //p5container是页面上定义的一个div，用于放canvas
+            colorMode(HSB, height, height, height); //
+            noStroke(); //无边框
+            background(0); //背景颜色
+          }
+
+          function draw() 
+          {
+            var whichBar = mouseX / barWidth;
+            if (whichBar != lastBar) {
+              var barX = whichBar * barWidth;
+              fill(mouseY, height, height);
+              rect(barX, 0, barWidth, height);
+              lastBar = whichBar;
+            }
+          }
+        </code>
+      </pre>
+  </div>
+  <p>processing语言实现同样的功能</p>
+  <div class = "codediv">
+      <pre>
+        <code class="language-javascript" data-lang="html">
+          int barWidth = 20;
+          int lastBar = -1;
+
+          void setup() 
+          {
+            size(800, 600);
+            colorMode(HSB, height, height, height);  
+            noStroke();
+            background(0);
+          }
+
+          void draw() 
+          {
+            int whichBar = mouseX / barWidth;
+            if (whichBar != lastBar) {
+              int barX = whichBar * barWidth;
+              fill(mouseY, height, height);
+              rect(barX, 0, barWidth, height);
+              lastBar = whichBar;
+            }
+          }
+        </code>
+      </pre>
+  </div> 
+  <p>
+     实现的效果如下
+   </p>
+  <div class="demo1">
+        <iframe id = "iframepage" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="demo_p5.html" marginwidth="0" marginheight="0"  style = "width:900px; height: 600px;" scrolling="no"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使用Processing实例" href="demo_p5.html">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+   <p>对于整个例子，对于一些函数，可以查看下面的官网三种语言的reference  
+      <a href="https://processing.org/reference/" target = "processingApi">Processing语言</a>
+      <a href="http://p5js.org/reference/" target = "processingApi">JavaScript</a>
+      <a href="http://py.processing.org/reference/" target = "processingApi">Python</a>
+   </p>
+   <div class="demo1">
+        <iframe id = "iframepage" name = "processingApi" sandbox="allow-popups allow-scripts allow-forms allow-same-origin"  marginwidth="0" marginheight="0"   src ="https://www.processing.org" style = "width:900px; height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使用Processing实例" href="https://processing.org/reference/">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+  </div>
+  <div id = "proinstance">
+  <p>
+    Processing的教程和下载可在<a href="https://www.processing.org">官网</a>得到的数据可视化实例可参考<a href="https://www.openprocessing.org">openprocessing网站</a> ，以下是几个个人觉得比较有意思的例子，例子来自网站：https://www.processing.org
+  </p>
+   <div class="demo1">
+        <iframe id = "iframepage" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="https://www.openprocessing.org/sketch/412889" marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使用Processing实例" href="https://www.openprocessing.org/sketch/412889">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+   <div class="demo1">
+        <iframe id = "iframepage" sandbox="allow-popups allow-scripts allow-forms allow-same-origin" src="https://www.openprocessing.org/sketch/387531" marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使用Processing实例" href="https://www.openprocessing.org/sketch/387531">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+   <div class="demo1">
+       <p>这个实现有声音，请在适宜环境下点击加载: 
+       <a  href="https://www.openprocessing.org/sketch/407022" target = "voice"><b>加载</b> </a>
+       </p>
+        <iframe id = "iframepage" name = "voice" sandbox="allow-popups allow-scripts allow-forms allow-same-origin"  marginwidth="0" marginheight="0"  style = "width:900px;height: 600px;" scrolling="yes"></iframe>
+        <div class="index-pop">
+        <a target="_blank" title="使使用Processing实例" href="https://www.openprocessing.org/sketch/407022">Open<svg height="16" width="12"><path d="M11 10h1v3c0 0.55-0.45 1-1 1H1c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1h3v1H1v10h10V10zM6 2l2.25 2.25-3.25 3.25 1.5 1.5 3.25-3.25 2.25 2.25V2H6z"></path></svg></a>
+      </div>
+   </div>
+  </div> 
+<div id = "otherWays">
+   <p><h3>其他数据可视化工具</h3>
+        <ul>
+          <li><a href="http://rawgraphs.io/">RAW</a></li>
+          <li><a href="http://echarts.baidu.com/index.html">Encharts</a></li>
+          <li><a href="http://p5js.org/">P5.js</a></li>
+          <li><a href="http://c3js.org/">C3.js</a></li>
+          <li><a href="http://dmitrybaranovskiy.github.io/raphael/">Raphael</a></li>
+          <li><a href="http://snapsvg.io/">snap.svg</a></li>
+          <li><a href="https://developers.google.com/chart/">Google Charts</a></li>
+          <li><a href="http://paperjs.org/">Paper.js</a></li>
+          <li><a href="https://www.tableau.com/">Tableau</a></li>
+        </ul>
+    </p>
+</div>
+<div name="git">
+    <h1>Git</h1>
+        
+    </p>
+</div>
+<div id = "ref">
+    <h1>参考文献</h1>
+    <h2>JavaScript参考资料</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript">Mozilla开发者教程</a></li>
+      <li><a href="http://javascript.ruanyifeng.com/#stdlib">JavaScript 标准参考教程(alpha)-阮一峰</a></li>
+      <li><a href="http://www.w3school.com.cn/b.asp">W3CSchool教程</a></li>
+      <li><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">廖雪峰JavaScript教程</a></li>
+    </ul>
+     <h2>数据可视化参考资料</h2>
+</div>
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="dataVisFig.html" data-title="JavaScript与数据可视化" data-url="http://notbuter.cn/dataVisFig.html"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"notbuter"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+
+  $(document).on('click', '#ds-thread textarea[name=message]', function(){
+    $('#ds-sync-checkbox').prop('checked', false);
+  });
+
+  //统计阅读量
+    if (localStorage.pagecount)
+      {
+        localStorage.pagecount=Number(localStorage.pagecount) +1;
+      }
+      else
+      {
+        localStorage.pagecount=1;
+      }
+    document.getElementById('visitnumber').innerHTML="Visits: " + localStorage.pagecount + " time(s).";
+
+
+
+
+</script>
+<!-- 多说公共JS代码 end -->
+
+</body>

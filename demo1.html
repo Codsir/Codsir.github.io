@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="msapplication-tap-highlight" content="no"/>
+<style>
+.link {
+  fill: none;
+  stroke: #98DF8A;
+  stroke-width: 2px;
+}
+
+#leadto {
+  fill: #9467BD/*#AEC7E8;*/
+}
+
+.link.leadto {
+  stroke:#9467BD;
+}
+
+#support {
+  fill:#98DF8A;
+}
+.link.support {
+  stroke:#98DF8A
+}
+
+.paperscript{
+   background-color: 
+}
+
+circle{
+  fill: white;
+  stroke: white;
+  stroke-width: 0.5px;
+} 
+
+text {
+  font: bold 15px "Times New Roman";
+  pointer-events: none;
+  /*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;*/
+}
+body{
+  background-color: white;
+
+}
+.tooltip{
+position: absolute;
+width: 200px;
+height: auto;
+font-family: "Microsoft YaHei";
+font-size: 14px;
+color:white;
+text-align: center;
+border-style: solid; 
+border-width: 0px;
+background-color: #12B7F5;
+border-radius: 5px;
+text-align: left;
+padding: 0px;
+}
+
+</style>
+
+<head>
+</head>
+<body>
+<div class = "tooltip">
+  
+</div>
+<script src="d3.v3.min.js"></script>
+<script>
+
+// http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/
+var links = [
+  {source: "JavaScript", target: "D3.js", type: "leadto"},
+  {source: "SVG", target: "D3.js", type: "leadto"},
+  {source: "CSS", target: "D3.js", type: "leadto"},
+  {source: "HTML5", target: "D3.js", type: "leadto"},
+  {source: "JavaScript", target: "p5.js", type: "leadto"},
+  {source: "Processing", target: "p5.js", type: "leadto"},
+  {source: "Processing", target:"JavaScript" , type: "support"},
+  {source: "Java", target: "Processing", type: "leadto"},
+  {source:  "Processing", target:"Python", type: "support"},
+  {source:  "Tableau", target:"Python", type: "support"},
+  {source: "D3.js", target: "C3.js", type: "leadto"},
+  {source: "SVG", target: "snap.svg", type: "leadto"},
+  {source: "HTML5", target: "paper.js", type: "leadto"},
+  {source: "JavaScript", target: "paper.js", type: "leadto"},
+  {source: "JavaScript", target: "Raphael", type: "leadto"},
+  {source: "XML", target: "SVG", type: "leadto"},
+  {source: "HTML5", target: "canvas", type: "leadto"},
+  {source: "JavaScript", target: "JSON", type: "leadto"},
+  {source: "JavaScript", target: "Encharts", type: "leadto"},
+  {source: "HTML5", target: "Encharts", type: "leadto"},
+  {source: "CSS", target: "Encharts", type: "leadto"},
+  {source: "SVG", target: "Encharts", type: "leadto"},
+  {source: "JavaScript", target: "Google charts", type: "leadto"},
+  {source: "HTML5", target: "Google charts", type: "leadto"},
+  {source: "CSS", target: "Google charts", type: "leadto"},
+  {source: "SVG", target: "Google charts", type: "leadto"},
+  {source: "D3.js", target: "RAW", type: "leadto"},
+
+];
+var points = [
+  {name:"JavaScript",pointSize:10,pointType:"language",pointText:"JavaScript ( JS ) 是一种轻量级解释型的，或是JIT编译型的程序设计语言，有着函数优先(First-class Function) 的编程语言。虽然它是作为开发web页面的脚本语言而出名的，但是在很多非浏览器环境中也使用JavaScript，例如 node.js 和 Apache CouchDB。JS是一种基于原型、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如：函数式编程）编程风格。了解更多 关于JavaScript。"},
+  {name:"HTML5",pointSize:10,pointType:"language",pointText:"超文本标记语言(英语：HyperText Markup Language，简称：HTML)是一种用于创建网页的标准标记语言。您可以使用 HTML 来建立自己的 WEB 站点,html运行在浏览器上,由浏览器来解析。HTML5是HTML最新的修订版本，2014年10月由万维网联盟（W3C）完成标准制定。HTML5的设计目的是为了在移动设备上支持多媒体。HTML5 简单易学。"},
+  {name:"CSS",pointSize:10,pointType:"language",pointText:"层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。"},
+  {name:"XML",pointSize:10,pointType:"language",pointText:"可扩展标记语言，标准通用标记语言的子集，是一种用于标记电子文件使其具有结构性的标记语言。XML 被设计用来传输和存储数据。"},
+  {name:"Java",pointSize:10,pointType:"language",pointText:"Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征.Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程. Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点.Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等"},
+  {name:"Python",pointSize:10,pointType:"language",pointText:"Python 是一个高层次的结合了解释性、编译性、互动性和面向对象的脚本语言。Python 的设计具有很强的可读性，相比其他语言经常使用英文关键字，其他语言的一些标点符号，它具有比其他语言更有特色语法结构。Python 是一种解释型语言： 这意味着开发过程中没有了编译这个环节。类似于PHP和Perl语言。Python 是交互式语言： 这意味着，您可以在一个Python提示符，直接互动执行写你的程序。Python 是面向对象语言: 这意味着Python支持面向对象的风格或代码封装在对象的编程技术。Python 是初学者的语言：Python 对初级程序员而言，是一种伟大的语言，它支持广泛的应用程序开发，从简单的文字处理到 WWW 浏览器再到游戏。"},
+  {name:"Processing",pointSize:10,pointType:"language",pointText:"Processing是一种计算机语言，以JAVA语法为基础，可转化成JAVA程序，不过在语法上简易许多。所有的原始代码及开发环境开放，主要用于艺术、影像、影音的设计与处理。"},
+  {name:"Tableau",pointSize:10,pointType:"software",pointText:"Tableau公司将数据运算与美观的图表完美地嫁接在一起。它的程序很容易上手，各公司可以用它将大量数据拖放到数字“画布”上，转眼间就能创建好各种图表。这一软件的理念是，界面上的数据越容易操控，公司对自己在所在业务领域里的所作所为到底是正确还是错误，就能了解得越透彻。"},
+  {name:"SVG",pointSize:10,pointType:"partOfLanguage",pointText:"SVG 指可伸缩矢量图形 (Scalable Vector Graphics),SVG 用来定义用于网络的基于矢量的图形,SVG使用XML格式定义图形,SVG图像在放大或改变尺寸的情况下其图形质量不会有所损失,SVG 是万维网联盟的标准,SVG与诸如DOM和XSL之类的W3C标准是一个整体"},
+  {name:"JSON",pointSize:10,pointType:"partOfLanguage",pointText:"JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript 规范的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。"},
+  {name:"canvas",pointSize:10,pointType:"partOfLanguage",pointText:"HTML5<canvas>标签用于绘制图(通过脚本，通常是JavaScript).不过，<canvas> 元素本身并没有绘制能力（它仅仅是图形的容器）<canvas> 标记和SVG以及VML之间的一个重要的不同是，<canvas> 有一个基于JavaScript的绘图API，而SVG和VML使用一个XML文档来描述绘图。"},
+  {name:"D3.js",pointSize:10,pointType:"apiOfLanguage",pointText:"D3.js是一个JavaScript库，它可以通过数据来操作文档。D3可以通过使用HTML、SVG和CSS把数据鲜活形象地展现出来。D3严格遵循Web标准，因而可以让你的程序轻松兼容现代主流浏览器并避免对特定框架的依赖。同时，它提供了强大的可视化组件，可以让使用者以数据驱动的方式去操作DOM。"},
+  {name:"C3.js",pointSize:10,pointType:"apiOfLanguage",pointText:"C3.js是基于D3.js开发的JavaScript库，它可以让开发者构建出可复用的图表，并且还提供了一系列图表上的交互行为。通过C3，只需要往generate函数中传入数据对象就可以轻松的绘制出图表，方便开发者使用。"},
+  {name:"p5.js",pointSize:10,pointType:"apiOfLanguage",pointText:"Processing的JavaScript实现"},
+  {name:"Raphael",pointSize:10,pointType:"apiOfLanguage",pointText:"Raphael 是一个用于在网页中绘制矢量图形的 Javascript 库。它使用 SVG W3C推荐标准和VML作为创建图形的基础，你可以通过 JavaScript 操作 DOM来轻松创建出各种复杂的柱状图、饼图、曲线图等各种图表，还可以绘制任意形状的图形，可以进行图表或图像的裁剪和旋转等复杂操作。"},
+  {name:"snap.svg",pointSize:10,pointType:"apiOfLanguage",pointText:"Snap.svg是一个强大且直观的SVG动画内容操纵API，支持屏蔽、裁剪、全梯度和组别等使得内容更具吸引力和交互性的功能。Snap.svg创建的目的在于摒弃Flash插件，将Flash的特性带到WEB上。作者是Dmitry Baranovskiy，他也是Raphael.js的作者。"},
+  {name:"paper.js",pointSize:10,pointType:"apiOfLanguage",pointText:"Processing的JavaScript实现"},
+  {name:"Encharts",pointSize:10,pointType:"apiOfLanguage",pointText:"ECharts，一个纯 Javascript 的图表库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖轻量级的 Canvas 类库 ZRender，提供直观，生动，可交互，可高度个性化定制的数据可视化图表。百度出品，主要通过option设置图像属性。"},
+  {name:"Google charts",pointSize:10,pointType:"apiOfLanguage",pointText:"Google Chart API是用来促进网页交互和生动表现使用者的数据。Google服务器可以从图表生成PNG图像和依照使用者的HTTP请求设置参数。这项服务提供了众多图表信息和格式。使用者可以自由地将图片嵌入到网页上"},
+  {name:"RAW",pointSize:10,pointType:"software",
+   pointText:"Density Design Research Lab基于D3.js制作的开源矢量图网页绘图工具，不需要自己编程，只需要将数据文件上传或将数据粘贴至在线表格，再选择合适的图表模板即可。"},
+];
+//根据出度个数增加点的大小
+links.forEach(function(link){     
+  points.forEach(function(point){
+    if(point.name===link.source){
+      point.pointSize+=2;
+    }
+  })
+})
+
+var nodes = {};
+
+// 得到所有的点并建立连接
+links.forEach(function(link) {
+  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+});
+
+
+
+//设置图形的大小
+var width = window.innerWidth;
+    height = window.innerHeight;
+
+//设置拖拽的力
+var force = d3.layout.force()  
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(180)
+    .charge(-300)
+    .on("tick", tick)
+    .start();
+//建立SVG对象
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// 设置箭头格式
+svg.append("defs").selectAll("marker") //箭头
+    .data(["suit", "leadto", "support"])
+    .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 9)
+    .attr("markerHeight", 11)
+    .attr("orient", "auto")
+    .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+//设置连线格式
+var path = svg.append("g").selectAll("path")
+    .data(force.links())
+  .enter().append("path")
+    .attr("class", function(d) { return "link " + d.type; })
+    .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+
+var tooltip = d3.select("body")
+.append("div")
+.attr("class","tooltip")
+.style("opacity",0.0);
+
+//设置点的格式
+var circle = svg.append("g").selectAll("circle")  //结点
+    .data(force.nodes())
+    .enter().append("circle")
+    .attr("r", function(d){
+                     var dRec=7;
+                     points.forEach(function(point){                 
+                     if(point.name===d.name){
+                          dRec = point.pointSize;
+                     }
+               })
+               return dRec;
+            })
+    .style("fill",function(d){
+        var pointClass =   "language";  
+        points.forEach(function(point){                                 
+                     if(point.name===d.name){
+                          pointClass = point.pointType;
+                     }
+               });
+        if(pointClass==="language")
+        {
+          return "#D62728";
+        }
+        else if(pointClass==="partOfLanguage")
+        {
+         return "#2CA02C";
+        }
+        else if(pointClass==="apiOfLanguage")
+        {
+          return "#1F77B4";
+        }
+        else if(pointClass==="software")
+        {
+          return "#FF7F0E";
+        }
+    })
+    .call(force.drag)
+    .on("mouseover",function(d){
+      /*
+      鼠标移入时，
+          （1）通过 selection.html() 来更改提示框的文字
+          （2）通过更改样式 left 和 top 来设定提示框的位置
+          （3）设定提示框的透明度为1.0（完全不透明）
+          */
+      var displayText = "";
+      points.forEach(function(point){
+        if(point.name===d.name){
+          displayText = point.pointText;
+        }
+      });
+      tooltip.html(displayText)
+                  .style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px")
+                  .style("opacity",1.0);
+      })
+      .on("mousemove",function(d){
+      /* 鼠标移动时，更改样式 left 和 top 来改变提示框的位置 */
+       
+          tooltip.style("left", (d3.event.pageX) + "px")
+                  .style("top", (d3.event.pageY + 20) + "px");
+      })
+      .on("mouseout",function(d){
+      /* 鼠标移出时，将透明度设定为0.0（完全透明）*/
+          tooltip.style("opacity",0.0);
+      })
+      
+    /**/
+
+//文本
+var text = svg.append("g").selectAll("text")
+    .data(force.nodes())
+  .enter().append("text")
+    .attr("x", 8)
+    .attr("y", ".31em")
+    .text(function(d) { return d.name; });
+
+// Use elliptical arc path segments to doubly-encode directionality.
+function tick() {
+  path.attr("d", linkArc);
+  circle.attr("transform", transform);
+  text.attr("transform", transform);
+}
+
+function linkArc(d) {
+  var dx = d.target.x - d.source.x,
+      dy = d.target.y - d.source.y,
+      dr = Math.sqrt(dx * dx + dy * dy);
+  return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + d.target.x + "," + d.target.y;
+}
+
+function transform(d) {
+  return "translate(" + d.x + "," + d.y + ")";
+}
+
+</script> 
+</body>

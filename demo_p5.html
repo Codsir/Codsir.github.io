@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-touch-fullscreen" content="yes"/>
+<meta name="msapplication-tap-highlight" content="no"/>
+<style>
+</style>
+<head>
+</head>
+<body>
+<script src="p5.js"></script>
+<div class="example">
+<div id="p5container"></div>
+<script type="text/javascript">/**
+ * Hue. 
+ * Hue is the color reflected from or transmitted through an object 
+ * and is typically referred to as the name of the color (red, blue, yellow, etc.) 
+ * Move the cursor vertically over each bar to alter its hue. 
+ */
+var barWidth = 20;
+var lastBar = -1;
+function setup() 
+{
+  var canvas = createCanvas(900, 600);
+  canvas.parent("p5container");
+  colorMode(HSB, height, height, height); //
+  noStroke(); //无边框
+  background(0); //背景颜色
+}
+
+function draw() 
+{
+  var whichBar = mouseX / barWidth;
+  if (whichBar != lastBar) {
+    var barX = whichBar * barWidth;
+    fill(mouseY, height, height);
+    rect(barX, 0, barWidth, height);
+    lastBar = whichBar;
+  }
+}
+</script>
+</div>
+</body>
