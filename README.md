@@ -4,6 +4,12 @@
 
 I am lazy, so I just write some blogs  for record when I have free time, but I will modify this page  in the future.
 
+
+
+### [Data Science and Matrix Optimization](https://github.com/Codsir/DSMO.course) 12.17, 2019
+
+### [Huawei Digix 2019](https://github.com/Codsir/Digix2019) 12.17, 2019
+
 ### [Shell Script Notes](/files/2018_09_06/shell_notes.md) 09.06, 2018
 
 ### [How to cross the Great Wall](/files/2018_08_27/2018_08_27.md) 08.27, 2018
