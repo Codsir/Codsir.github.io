@@ -1,4 +1,4 @@
-## Hi! I am Tiger Zhang, I am a Notbuter, Welcome to my personal page!
+## Welcome!
 ### [My Resume](resume.md)
 ## My blogs
 
@@ -6,7 +6,7 @@ I am lazy, so I just write some blogs  for record when I have free time, but I w
 
 ### [Shell Script Notes](/files/2018_09_06/shell_notes.md) 09.06, 2018
 
-### [Not just Tunnello:how to cross the Great Wall](/files/2018_08_27/2018_08_27.md) 08.27, 2018
+### [How to cross the Great Wall](/files/2018_08_27/2018_08_27.md) 08.27, 2018
 
 ### [Optim.py](/files/2018_6_23/2018_6_23.md) 6.23, 2018
 
@@ -18,11 +18,11 @@ I am lazy, so I just write some blogs  for record when I have free time, but I w
 
 ### [Data Visualization](dataVisFig.html) 3.18, 2017
 
-### [动态规划实现生物碱基序列全局匹配](/files/2016_11_20/2017_11_20.md) 11.20, 2016
+### [Global matching of biological base sequences by dynamic programming](/files/2016_11_20/2017_11_20.md) 11.20, 2016
 
-###  [生物碱基序列分形绘图](/files/2016_10_09/2017_10_09.html) 10.09, 2016
+###  [Fractal in Biological Basic Groups](/files/2016_10_09/2017_10_09.html) 10.09, 2016
 
-### [数独游戏](/files/2016_09_10/suduku.md) 9.10, 2016
+### [Sodoku](/files/2016_09_10/suduku.md) 9.10, 2016
 
 ### Here are my sites:
 
