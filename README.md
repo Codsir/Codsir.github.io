@@ -1,4 +1,4 @@
-## Hi! I am Tiger Zhang, I am a Notbuter, Welcome to my personnal Page!
+## Hi! I am Tiger Zhang, I am a Notbuter, Welcome to my personal page!
 ### [My Resume](resume.md)
 ## My blogs
 
@@ -6,7 +6,7 @@ I am lazy, so I just write some blogs  for record when I have free time, but I w
 
 ### [Shell Script Notes](/files/2018_09_06/shell_notes.md) 09.06, 2018
 
-### [Tunnello:how to cross the Great Wall](/files/2018_08_27/2018_08_27.md) 08.27, 2018
+### [Not just Tunnello:how to cross the Great Wall](/files/2018_08_27/2018_08_27.md) 08.27, 2018
 
 ### [Optim.py](/files/2018_6_23/2018_6_23.md) 6.23, 2018
 
@@ -28,8 +28,6 @@ I am lazy, so I just write some blogs  for record when I have free time, but I w
 
 * _[my previous blog](http://www.cnblogs.com/TigerZhang/)_
 * _[my Douban page](https://www.douban.com/people/158471093/)_
-* _[my Weibo](http://weibo.com/5237210643/profile?topnav=1&wvr=6&is_all=1)_
-* _[my Tweeter](https://twitter.com/?lang=zh-cn)_
 * _[my GitHub page](https://github.com/Codsir)_
 
 
