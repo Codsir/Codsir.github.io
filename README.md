@@ -4,7 +4,7 @@
 
 I am lazy, so I just write some blogs  for record when I have free time, but I will modify this page  in the future.
 
-
+### [Face Login On Ubuntu](/files/2020_06_27/facelogin_ubuntu.md) 06.27, 2020
 
 ### [Data Science and Matrix Optimization](https://github.com/Codsir/DSMO.course) 12.17, 2019
 
